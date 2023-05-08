@@ -409,7 +409,7 @@ class LDIF(nn.Module):
                 if self._temp_folder is None:
                     # self._temp_folder = tempfile.mktemp(dir='/dev/shm')
                     self._temp_folder = './temp'
-                    os.makedirs(self._temp_folder)
+                    os.makedirs(self._temp_folder, exist_ok=True)
                     self.decoder.write_occnet_file(os.path.join(self._temp_folder, 'serialized.occnet'))
                     shutil.copy('./external/ldif/ldif2mesh/ldif2mesh', self._temp_folder)
                 si_path = os.path.join(self._temp_folder, 'ldif.txt')

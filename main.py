@@ -5,7 +5,8 @@
 import argparse
 from configs.config_utils import CONFIG
 import os
-import train, test,demo
+# import train, test,demo
+import demo
 
 
 def parse_args():
@@ -28,16 +29,16 @@ if __name__ == '__main__':
     cfg.log_string(cfg.config)
 
     '''Run'''
-    if cfg.config['mode'] == 'train':
-        try:
-            train.run(cfg)
-        except KeyboardInterrupt:
-            pass
-        except:
-            raise
-        cfg.update_config(mode='test', resume=True, weight=os.path.join(cfg.save_path, 'model_best.pth'))
-    if cfg.config['mode'] == 'test':
-        test.run(cfg)
+    # if cfg.config['mode'] == 'train':
+    #     try:
+    #         train.run(cfg)
+    #     except KeyboardInterrupt:
+    #         pass
+    #     except:
+    #         raise
+    #     cfg.update_config(mode='test', resume=True, weight=os.path.join(cfg.save_path, 'model_best.pth'))
+    # if cfg.config['mode'] == 'test':
+    #     test.run(cfg)
     if cfg.config['mode'] == 'demo':
         demo.run(cfg)
 
